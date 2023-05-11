@@ -1,0 +1,17 @@
+body {
+  background-color: #282c34;
+  font-size: 13px;
+  color: white;
+}
+
+.main {
+  max-width: 1280px;
+  padding: 60px 15px;
+  margin: 0 auto;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
