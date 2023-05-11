@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 
 import { Configuration, OpenAIApi } from "openai";
@@ -9,7 +12,7 @@ const context = loadData();
 const products = loadDataProducts();
 
 const configuration = new Configuration({
-    apiKey: '',
+    apiKey: process.env.API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
