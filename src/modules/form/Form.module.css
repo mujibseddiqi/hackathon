@@ -70,6 +70,13 @@ button:active {
 
 .result {
   margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #ccc;
+}
+
+.result > div {
+  justify-content: center;
+  margin: 0;
 }
 
 .code_block {

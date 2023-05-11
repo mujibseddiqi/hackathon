@@ -14,7 +14,7 @@ const Form = () => {
         const response = await fetch('http://localhost:3001/q', {
             method: 'post',
             headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({  q: prompt })
+            body: JSON.stringify({  q: `Give me GTIN of product with the productname ${prompt} based on the data` })
         }).then((response) => response.json()).then((data) => { setLoading(false); return data; } ).catch((err) => {
             console.log(err);
             setLoading(false);
@@ -64,7 +64,7 @@ const Form = () => {
             </form>
             <div className={classes.result}>
                 {
-                    result &&
+                    !loading ?
                     <div className={classes.result_container}>
                         <h2>Details</h2>
 
@@ -135,6 +135,17 @@ const Form = () => {
                             </>
                         }
                     </div>
+                        :
+                        <Oval
+                            height={40}
+                            width={40}
+                            color="#fff"
+                            visible={true}
+                            ariaLabel='oval-loading'
+                            secondaryColor="#ccc"
+                            strokeWidth={2}
+                            strokeWidthSecondary={2}
+                        />
                 }
             </div>
         </>
