@@ -15,7 +15,7 @@ const loadData = () => {
             data = data.data;
 
             console.log(file + ' ' + data.GeneralInfo.ProductName);
-            console.log(data.GeneralInfo.TitleInfo.GeneratedIntTitle)
+            console.log(data.GeneralInfo)
             products.push({
                 //IcecatId: data.GeneralInfo.IcecatId,
                 GTIN: data.GeneralInfo.GTIN[0],

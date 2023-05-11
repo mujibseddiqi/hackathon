@@ -103,7 +103,7 @@ app.post('/q', async (req, res) => {
         model: "text-davinci-003",
         prompt: promt,
     });
-    console.log(promt)
+
     let GTIN = completion?.data?.choices[0] ? completion?.data?.choices[0]?.text.match(/\d{13}/g) : null;
     GTIN = GTIN && GTIN.join('');
 
