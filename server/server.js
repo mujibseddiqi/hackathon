@@ -9,7 +9,7 @@ const context = loadData();
 const products = loadDataProducts();
 
 const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: '',
 });
 
 const openai = new OpenAIApi(configuration);
