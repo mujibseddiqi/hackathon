@@ -30,7 +30,7 @@ app.get('/', async (req, res) => {
 
     const prompt = 'Give me GTIN of product with productname s20?';
 
-    const productData = products.map((product) => {
+    let productData = products.map((product) => {
         const { GTIN, productname, BrandPartCode } = product?.GeneralInfo ?? {};
  
         return {
@@ -39,7 +39,10 @@ app.get('/', async (req, res) => {
         }
     });
 
-    const data = searchChatGPT(prompt, productData);
+    const data = searchChatGPT(prompt, [
+        { role: 'user', content: 'Give me GTIN of product with productname s20?' },
+        ...productData
+    ]);
 
     res.json(data);
 
@@ -90,7 +93,7 @@ app.post('/q', async (req, res) => {
 
     let product = null
     product = products.find((product) => {
-        return product.GeneralInfo.GTIN[0] === GTIN;
+        return product?.GeneralInfo?.GTIN[0] === GTIN;
     })
 
     res.json({ 
@@ -111,7 +114,6 @@ const searchChatGPT = async (prompt, messages) => {
     try {
         const response = await openai.createChatCompletion({
             model: "text-davinci-003",
-            prompt: prompt,
             messages: messages,
             max_tokens: 100,
             n: 1,
